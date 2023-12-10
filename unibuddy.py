@@ -23,14 +23,14 @@ while True:
     except ValueError:
         print("That's not a number :/")
     else:
-        break 
+        break
 
 if age < 18:
     print(f"Oh wow! {age} is such a young age to be starting university! :O")
-elif age > 25 and age < 35:
+elif 25 < age <= 35:
     print(f"Oh, {age} is a little older than I expected. :O")
 elif age > 35:
-    print(f"Nice, it's never too old to go to university!")
+    print("Nice, it's never too old to go to university!")
 else:
     print(f"{age} is a nice age to be going to university!")
 
@@ -77,7 +77,7 @@ elif fav_colour == 'PURPLE':
 3. Purple hiking club
 """)
 
-else: 
+else:
     print(f"{fav_colour}, i'm not sure that was a colour you have entered, please try again.")
 
 # Responses based on their age
@@ -99,22 +99,22 @@ else:
 # Store frequently asked questions and their answers in lists
 
 questions = [
-"where can i access my timetable",
-"Who is my personal tutor",
-"what clubs are offered by the university",
-"who should i contact regarding paying tuition fees",
-"where can i find out about student accommodation"
-]
+    "where can i access my timetable",
+    "Who is my personal tutor",
+    "what clubs are offered by the university",
+    "who should i contact regarding paying tuition fees",
+    "where can i find out about student accommodation"
+    ]
 
 answers = [
-"Timetables can be found in your student dashboard.",
-"You can email your deparment to find your assigned personal tutor.",
-"A full list of the A-Z clubs and societies are found on the union website.",
-"Please contact the student admissions office regarding fee payments.",
-"Please contact the student accomdation office."
-]
+    "Timetables can be found in your student dashboard.",
+    "You can email your deparment to find your assigned personal tutor.",
+    "A full list of the A-Z clubs and societies are found on the union website.",
+    "Please contact the student admissions office regarding fee payments.",
+    "Please contact the student accomdation office."
+    ]
 
-# Continue to ask user for questions 
+# Continue to ask user for questions
 while True:
     query = input("> Do you have any questions? (enter 'q' to quit): ")
 
@@ -126,9 +126,10 @@ while True:
         index = questions.index(query)
         print(answers[index])
 
-    # Exit the loop 
+    # Exit the loop
     elif query == 'q':
         break
 
     else:
         print("Sorry, I don't have the answer to that question :(")
+          
