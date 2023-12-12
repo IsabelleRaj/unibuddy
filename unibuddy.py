@@ -96,40 +96,42 @@ else:
 3. Board game cafe session
 """)
 
-# Store frequently asked questions and their answers in lists
+# Add the FAQ questions and answers stored in text files to a list
 
-questions = [
-    "where can i access my timetable",
-    "Who is my personal tutor",
-    "what clubs are offered by the university",
-    "who should i contact regarding paying tuition fees",
-    "where can i find out about student accommodation"
-    ]
+faq_questions = []
+faq_answers = []
 
-answers = [
-    "Timetables can be found in your student dashboard.",
-    "You can email your deparment to find your assigned personal tutor.",
-    "A full list of the A-Z clubs and societies are found on the union website.",
-    "Please contact the student admissions office regarding fee payments.",
-    "Please contact the student accomdation office."
-    ]
+with open("Portfolio/unibuddy_faq.txt","r", encoding="utf-8") as file_in:
+    for lines in file_in:
+        lines = lines.strip('\n').split()
+        lines = " ".join(lines)
+        faq_questions.append(lines)
 
-# Continue to ask user for questions
+with open("Portfolio/unibuddy_faq_answers.txt","r", encoding="utf-8") as file_in:
+    for lines in file_in:
+        lines = lines.strip('\n').split()
+        lines = " ".join(lines)
+        faq_answers.append(lines)
+
+# Display FAQ questions and request user input
+print("Welcome to the frequently asked questions (FAQ) section!\nHere is the list of questions: \n")
+for index, question in enumerate(faq_questions, start = 1):
+    print(f"{index}. {question}")
+
 while True:
-    query = input("> Do you have any questions? (enter 'q' to quit): ")
+    user_input = input("\nChoose the number of the question (enter 'q' to quit): ").lower()
 
-    # Tranform the user input to the desired format
-    query = query.strip("?").strip().lower()
-
-    # If the input is in our question list, print corresponding answer
-    if query in questions:
-        index = questions.index(query)
-        print(answers[index])
-
-    # Exit the loop
-    elif query == 'q':
+    if user_input == 'q':
+        print("Thank you for using Unibuddy! See you later! :)")
         break
 
+    if not user_input.isdigit():
+        print("Error: You did not enter a number or 'q' to quit. Please try again.")
+
     else:
-        print("Sorry, I don't have the answer to that question :(")
-          
+        user_choice = int(user_input)
+
+        if user_choice not in range(1, len(faq_questions) + 1):
+            print("Error: You did not enter a valid number. Please try again.")
+        else:
+            print(f"You chose question {user_choice}. Here is your answer: {faq_answers[user_choice-1]}")
